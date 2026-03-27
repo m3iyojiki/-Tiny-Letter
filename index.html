@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(„• ֊ •„)੭ ♡ Tiny Letter</title>
+    <link rel="stylesheet" href="style.css">
+   
+    <style>
+
+ :root {
+        --color-env: #f5e1e0;
+        --color-env-flap: #f1d4d1;
+        --color-paper-front: #f8f5e8;
+        --color-paper-back: #f8f5e8;
+        --color-text: #4a4a4a;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        font-family:"Times New Roman", Times, serif;
+        background-image: url('bggrey.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+    }
+
+    .envelope-wrapper {
+        position: relative;
+        cursor: pointer;
+        z-index: 10;
+        transition: transform 0.3s;
+    }
+
+    .envelope-wrapper:hover {
+        transform: translateY(-10px);
+    }
+
+    .envelope {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    background-color: var(--color-env);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 3; 
+    overflow: hidden;
+}
+
+    
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    border-top: 120px solid var(--color-env-flap);
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    transform-origin: top;
+    transition: transform 0.5s 0.3s;
+}
+    
+.paper-container {
+    position: absolute;
+    top: 10px; 
+    left: 20px;
+    width: 280px;
+    height: 180px;
+    z-index: 1; 
+    transition: transform 0.6s 0.5s, z-index 0.1s 0.5s, height 0.3s;
+    perspective: 1000px;
+}
+
+    .paper-flip {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .paper-front, .paper-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        padding: 25px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .paper-front { background-color: var(--color-paper-front); }
+    .paper-back { background-color: var(--color-paper-back); transform: rotateY(180deg); }
+
+    .poem {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--color-text);
+        white-space: pre-line;
+        font-weight: 500;
+    }
+
+   
+
+    
+    .envelope-wrapper.open .envelope::before {
+        transform: rotateX(180deg);
+        z-index: 1; 
+    }
+
+    
+    .envelope-wrapper.open .envelope {
+        z-index: 2;
+        overflow: visible;
+    }
+
+
+    .envelope-wrapper.open .paper-container {
+    transform: translateY(-190px);
+    z-index: 5; 
+    height: 350px;
+    overflow: visible; 
+}
+
+    .paper-container.flipped .paper-flip {
+        transform: rotateY(180deg);
+    }
+
+    .instruction {
+        position: absolute;
+        bottom: -80px;
+        width: 100%;
+        text-align: center;
+        color: #333;
+        font-size: 13px;
+        background: rgba(255,255,255,0.8);
+        padding: 8px 15px;
+        border-radius: 30px;
+        font-weight: bold;
+    }
+.envelope-paper-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-env);
+    z-index: 2;
+    transition: opacity 0.4s 0.2s;
+}
+
+
+.envelope-wrapper.open .envelope-paper-cover {
+    opacity: 0;
+    pointer-events: none;
+}
+    </style>
+</head>
+<body>
+
+    <div id="envelopeWrapper" class="envelope-wrapper" onclick="openEnvelope()">
+       <div class="envelope">
+    <div class="envelope-paper-cover"></div> 
+
+    <div id="paperContainer" class="paper-container" onclick="flipPaper(event)">
+                <div class="paper-flip">
+                    <div class="paper-front">
+                        <div class="poem">-`♡´-
+                             hey idk if you'll ever read this
+                             but i've been wanting to say a few things
+                             for a while now i've been thinking
+                             about you and i truly hope you've been
+                             doing okay
+
+                            things have felt a little quieter without you
+                            but i'm slowly learning to take everything one step at a time and be gentle 
+                            with myself i know life can
+                            get overwhelming sometimes so i just hope you're giving yourself enough rest ˚𝜗𝜚˚⋆
+                        </div>
+                        <p style="font-size: 10px; color: #aaa; margin-top: 15px;">tap the paper to next page (っᴗ͈ˬᴗ͈ ς)</p>
+                    </div>
+                    <div class="paper-back">
+                        <div class="poem"> and take care you're
+                            don't have to have everything figured out
+                            right away take things at your own pace okay? i still cherish what we had and i'm always here
+                            
+                            what we shared still means something to me
+                            and i'll always appreciate those moments
+                            if someday you feel ready i'd be really
+                            happy to hear from you again even
+                            if it's just a simple conversation 
+                            Take care ( ˶ˆᗜˆ˵ )
+
+                            April 3rd is my birthday
+                            from May („• ֊ •„)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="hint" class="instruction"> ( ꩜ ᯅ ꩜;)⁭ click the envelope to read</div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const wrapper = document.getElementById('envelopeWrapper');
+            if (!wrapper.classList.contains('open')) {
+                wrapper.classList.add('open');
+                document.getElementById('hint').innerText = "tap the paper to next page (❀ ❛ ֊ ❛„)♡";
+            }
+        }
+
+        function flipPaper(event) {
+            event.stopPropagation();
+            const container = document.getElementById('paperContainer');
+            const wrapper = document.getElementById('envelopeWrapper');
+            
+            if (wrapper.classList.contains('open')) {
+                container.classList.toggle('flipped');
+            }
+        }
+    </script>
+</body>
+</html> 
